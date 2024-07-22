@@ -1,0 +1,7 @@
+name: 'Display Name'
+type:  module
+core_version_requirement: ^10
+description:  'Displays the current user name'
+package:  Custom
+version: 1.0.0
+  
