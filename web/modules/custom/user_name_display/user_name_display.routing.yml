@@ -1,7 +1,0 @@
-user_name_display.overview:
-  path: '/display-name'
-  defaults:
-    _controller: 'Drupal\user_name_display\Controller\CustomModule1::displayPage'
-    _title: 'Custom Module 1'
-  requirements:
-    _permission: 'access user_name_display page'
