@@ -1,0 +1,6 @@
+name: 'View Count Nodes'
+type:  module
+core_version_requirement: ^10
+description:  'Counts the number of times a node is viewed in session'
+package:  Custom
+version: 1.0.0
