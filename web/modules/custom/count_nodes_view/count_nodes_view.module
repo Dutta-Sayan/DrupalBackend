@@ -5,16 +5,18 @@
  * This function emonstrates how to use hook functions.
  */
 
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\Core\Entity\EntityInterface;
 use Drupal\node\NodeInterface;
-use Drupal\Core\StringTranslation\StringTranslationTrait;
 
 /**
- * Implements hook_count_nodes_view.
- * 
+ * Implements hook_count_nodes_view().
+ *
  * Counts the number oftimes a node has been viewed in a particular session.
- * 
+ *
  * @param Drupal\node\NodeInterface $node
  *   The current node.
+ *
  * @return int
  *   Returns the view counts of the node.
  */
@@ -22,7 +24,7 @@ function count_nodes_view_count_nodes(NodeInterface $node): int {
   // Fetching the current session.
   $session = \Drupal::request()->getSession();
   // Getting the count of all views of the nodes from session variable.
-  $current_counts = $session->get('count_nodes.view_counts', array());
+  $current_counts = $session->get('count_nodes.view_counts', []);
   // If view count is not set for current node, setting it to 1,
   // else incrementing it.
   if (!isset($current_counts[$node->id()])) {
@@ -38,27 +40,26 @@ function count_nodes_view_count_nodes(NodeInterface $node): int {
 }
 
 /**
- * Implements hook_ENTITY_TYPE_view.
- * 
+ * Implements hook_ENTITY_TYPE_view().
+ *
  * @param array $build
  *   Array representing the entity content.
  * @param Drupal\Core\Entity\EntityInterface $entity
- *   The current entity object
- * @param Drupal\Core\Entity\Display\EntityViewDisplayInterface $display 
+ *   The current entity object.
+ * @param Drupal\Core\Entity\Display\EntityViewDisplayInterface $display
  *   The entity view display.
  * @param mixed $view_mode
  *   The view mode the entity is rendered in.
- * @return void
  */
-function count_nodes_view_node_view(array &$build, \Drupal\Core\Entity\EntityInterface $entity, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display, $view_mode) {
+function count_nodes_view_node_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
   $module_handler = \Drupal::moduleHandler();
-  $current_counts = $module_handler->invokeAll('count_nodes', array($entity));
+  $current_counts = $module_handler->invokeAll('count_nodes', [$entity]);
   // invokeAll() returns an array having one value, extracting it.
   $current_counts = $current_counts[0];
-  $build['view_count'] = array(
-    '#markup' => '<p>' . t('You have viewed this node @total times this session.', array('@total' => $current_counts)) . '</p>',
-    '#cache' => array(
+  $build['view_count'] = [
+    '#markup' => '<p>' . t('You have viewed this node @total times this session.', ['@total' => $current_counts]) . '</p>',
+    '#cache' => [
       'max-age' => 0,
-    ),
-  );
+    ],
+  ];
 }
