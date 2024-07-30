@@ -1,0 +1,5 @@
+name: 'Custom Form'
+type: module
+description: 'This module saves employee data in database.'
+package: Custom
+core_version_requirement: ^10 || ^11
