@@ -250,13 +250,18 @@ final class CustomConfigFormAjax extends ConfigFormBase {
     $fullname = trim($form_state->getValue('fullname'));
     $phone_no = trim($form_state->getValue('phone'));
     $email = trim($form_state->getValue('email'));
+    // Result for full name validity check.
     $fullnameValidityResult = $this->checkNameValidity($fullname);
+    // Result for email validity check.
     $emailValidityResult = $this->checkEmailValidity($email);
+    // Result for phone number validity check.
     $phoneValidityResult = $this->checkPhoneValidity($phone_no);
 
+    // Checking if any fields are empty.
     if (empty($fullname) || empty($phone_no) || empty($email)) {
       $form_state->setErrorByName('empty_error', $this->t('Empty fields present'));
     }
+    // Checking the validity results.
     elseif ($fullnameValidityResult === FALSE || $emailValidityResult === FALSE ||
     $phoneValidityResult === FALSE) {
       $form_state->setErrorByName('validity', 'Invalid Input Present');
