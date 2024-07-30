@@ -1,0 +1,10 @@
+custom_form.config:
+  title: Custom Form config
+  parent: system.admin_config_system
+  route_name: custom_form.config
+
+custom_form.config.ajax:
+  title: Custom config ajax
+  parent: system.admin_config_system
+  route_name: custom_form.config.ajax
+
