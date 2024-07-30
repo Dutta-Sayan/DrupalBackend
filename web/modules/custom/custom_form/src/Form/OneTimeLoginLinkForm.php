@@ -32,7 +32,6 @@ class OneTimeLoginLinkForm extends FormBase {
       '#title' => t('User Id'),
       '#type' => 'number',
       '#size' => 25,
-      // '#required' => TRUE,
       '#description' => t('Enter the user id'),
     ];
 
