@@ -1,4 +1,4 @@
-custom_form.config:
+custom_form.custom_form_config:
   path: '/admin/config/system/custom-config'
   defaults:
     _title: 'Custom form config'
@@ -6,7 +6,7 @@ custom_form.config:
   requirements:
     _permission: 'administer site configuration'
 
-custom_form.config.ajax:
+custom_form.custom_form_config_ajax:
   path: '/admin/config/system/custom-config-ajax'
   defaults:
     _title: 'Custom config ajax'
@@ -14,7 +14,7 @@ custom_form.config.ajax:
   requirements:
     _permission: 'administer site configuration'
 
-one_time_login:
+custom_form.one_time_login:
   path: '/one-time-login'
   defaults:
     _title: 'One Time Login Link Generation'

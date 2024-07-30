@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Drupal\employee\Form;
+namespace Drupal\custom_form\Form;
 
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
