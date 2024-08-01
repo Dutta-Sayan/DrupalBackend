@@ -1,0 +1,16 @@
+custom_routes.content:
+  path: '/custom-routes-page'
+  defaults:
+    _title: 'Custom Routes Testing'
+    _controller: '\Drupal\custom_routes\Controller\CustomRoutesController::content'
+  requirements:
+    _role: administrator+content_editor
+    _permission: 'access the custom page'
+
+custom_routes.dynamic:
+  path: '/campaign/value/{slug}'
+  defaults:
+    _title: 'Dynamic Value from Route Testing'
+    _controller: '\Drupal\custom_routes\Controller\DynamicRoutesController::content'
+  requirements:
+    _permission: 'access content'

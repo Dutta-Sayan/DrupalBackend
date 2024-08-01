@@ -1,0 +1,5 @@
+name: 'Custom Routes'
+type: module
+description: 'This module is used for custom routes configuration.'
+package: Custom
+core_version_requirement: ^10 || ^11
