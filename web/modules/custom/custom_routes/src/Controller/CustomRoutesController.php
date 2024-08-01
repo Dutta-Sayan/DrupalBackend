@@ -12,7 +12,7 @@ use Drupal\Core\Session\AccountInterface;
 class CustomRoutesController extends ControllerBase {
 
   /**
-   * Displays the content of the custom routes page..
+   * Displays the content of the custom routes page.
    *
    * @return array
    *   Returns the content to be displayed.
