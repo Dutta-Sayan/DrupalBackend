@@ -1,0 +1,50 @@
+<?php
+
+declare(strict_types=1);
+
+/**
+ * Implements hook schema.
+ * 
+ * @return array
+ *   Returns the schema definition structure.
+ */
+function custom_blocks_schema(): array {
+  // Defining the structure of the table.
+  $schema['custom_block_data_table'] = [
+    'description' => 'Custom blocks data',
+    'fields' => [
+      'id' => [
+        'type' => 'serial',
+        'not null' => TRUE,
+        'description' => 'Primary Key: Unique Record Id',
+      ],
+      'group_name' => [
+        'description' => 'Name of the group',
+        'type' => 'varchar',
+        'length' => 255,
+      ],
+      'first_label_name' => [
+        'description' => 'Name of the 1st label',
+        'type' => 'varchar',
+        'length' => 255,
+      ],
+      'first_label_value' => [
+        'description' => 'Value of 1st Label',
+        'type' => 'varchar',
+        'length' => 255,
+      ],
+      'second_label_name' => [
+        'description' => 'Name of the 2nd label',
+        'type' => 'varchar',
+        'length' => 255,
+      ],
+      'second_label_value' => [
+        'description' => 'Value of 2nd Label',
+        'type' => 'varchar',
+        'length' => 255,
+      ],
+    ],
+    'primary key' => ['id'],
+  ];
+  return $schema;
+}

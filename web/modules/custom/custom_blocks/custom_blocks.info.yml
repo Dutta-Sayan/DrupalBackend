@@ -1,0 +1,8 @@
+name: 'Custom Blocks Module'
+type:  module
+core_version_requirement: ^10
+description:  'Testing custom module 1'
+package:  Custom
+dependencies:
+  - drupal:block
+version: 1.0.0
