@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Drupal\custom_blocks\Form;
 
 use Drupal\Core\Cache\Cache;
@@ -10,9 +8,12 @@ use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
- * Provides a Custom Blocks Module form.
+ * Provides a Custom form.
+ *
+ * Contains a group of fields to take input to display in a block.
+ * More groups can be added or removed during value input.
  */
-final class CustomForm extends FormBase {
+class CustomForm extends FormBase {
 
   /**
    * {@inheritdoc}
@@ -112,10 +113,6 @@ final class CustomForm extends FormBase {
         ],
       ];
     }
-
-    // Ensures that the form state reflects the latest changes,
-    // when dynamic elements are added or removed.
-    $form_state->setCached(FALSE);
 
     // Submit button.
     $form['actions']['submit'] = [
