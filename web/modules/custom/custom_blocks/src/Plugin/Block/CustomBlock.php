@@ -8,12 +8,12 @@ use Drupal\Core\Block\BlockBase;
  * Provides a Custom block.
  *
  * @Block(
- *   id = "custom_block_1",
- *   admin_label = @Translation("Custom Block 1"),
+ *   id = "custom_block",
+ *   admin_label = @Translation("Custom Block"),
  *   category = @Translation("First custom block"),
  * )
  */
-class CustomBlock1 extends BlockBase {
+class CustomBlock extends BlockBase {
 
   /**
    * Prints the role of the currently logged in user.
