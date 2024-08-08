@@ -1,38 +1,38 @@
 <div class="custom-data-block">
-<div class="custom-data-block-container">
-  <div class="custom-data-block-heading"> 
-      <h3>FLAGSHIP PROGRAMMES</h3>
+  <div class="custom-data-block-container">
+    <div class="custom-data-block-heading"> 
+        <h3>FLAGSHIP PROGRAMMES</h3>
+    </div>
+    <table>
+      <thead>
+        <tr align="center">
+          {% for item in content %}
+            <th>{{ item.group_name }}</th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          {% for item in content %}
+            <td align="center">{{ item.first_label }}</td>
+          {% endfor %}
+        </tr>
+        <tr>
+          {% for item in content %}
+            <td align="center">{{ item.first_label_value }}</td>
+          {% endfor %}
+        </tr>
+        <tr>
+          {% for item in content %}
+            <td align="center">{{ item.second_label }}</td>
+          {% endfor %}
+        </tr>
+        <tr>
+          {% for item in content %}
+            <td align="center">{{ item.second_label_value }}</td>
+          {% endfor %}
+        </tr>
+      </tbody>
+    </table>
   </div>
-  <table>
-    <thead>
-      <tr align="center">
-        {% for item in content %}
-          <th>{{ item.group_name }}</th>
-        {% endfor %}
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        {% for item in content %}
-          <td align="center">{{ item.first_label }}</td>
-        {% endfor %}
-      </tr>
-      <tr>
-        {% for item in content %}
-          <td align="center">{{ item.first_label_value }}</td>
-        {% endfor %}
-      </tr>
-      <tr>
-        {% for item in content %}
-          <td align="center">{{ item.second_label }}</td>
-        {% endfor %}
-      </tr>
-      <tr>
-        {% for item in content %}
-          <td align="center">{{ item.second_label_value }}</td>
-        {% endfor %}
-      </tr>
-    </tbody>
-  </table>
-</div>
 </div>
