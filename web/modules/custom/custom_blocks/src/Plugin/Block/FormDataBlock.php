@@ -48,6 +48,11 @@ class FormDataBlock extends BlockBase {
     return [
       '#theme' => 'my_custom_block',
       '#content' => $group_info,
+      '#attached' => [
+        'library' => [
+          'custom_blocks/custom_blocks_css',
+        ],
+      ],
       '#cache' => [
         'tags' => ['custom_block_data_table'],
       ],
