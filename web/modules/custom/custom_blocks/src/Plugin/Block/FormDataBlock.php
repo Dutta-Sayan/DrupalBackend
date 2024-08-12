@@ -3,6 +3,9 @@
 namespace Drupal\custom_blocks\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
+use Drupal\Core\Database\Connection;
+use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Provides a Custom block to render form data.
@@ -13,7 +16,48 @@ use Drupal\Core\Block\BlockBase;
  *   category = @Translation("Displays form data."),
  * )
  */
-class FormDataBlock extends BlockBase {
+class FormDataBlock extends BlockBase implements ContainerFactoryPluginInterface {
+
+  /**
+   * Database Connection variable.
+   *
+   * @var \Drupal\Core\Database\Connection
+   */
+  protected $database;
+
+  /**
+   * Constructs a FormDataBlock object.
+   *
+   * @param array $configuration
+   *   A configuration array containing information about the plugin instance.
+   * @param string $plugin_id
+   *   The plugin_id for the plugin instance.
+   * @param mixed $plugin_definition
+   *   The plugin implementation definition.
+   * @param \Drupal\Core\Database\Connection $database
+   *   Database connection object.
+   */
+  public function __construct(
+    array $configuration,
+    $plugin_id,
+    $plugin_definition,
+    Connection $database,
+  ) {
+    parent::__construct($configuration, $plugin_id, $plugin_definition);
+    $this->database = $database;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
+    return new static(
+      $configuration,
+      $plugin_id,
+      $plugin_definition,
+      $container->get('database')
+    );
+  }
 
   /**
    * Renders the form data.
@@ -22,10 +66,8 @@ class FormDataBlock extends BlockBase {
    *   Returns the message to be displayed.
    */
   public function build(): array {
-    // Making database conection.
-    $database = \Drupal::database();
     // Fetching the selected table.
-    $query = $database->select('custom_block_data_table', 'b');
+    $query = $this->database->select('custom_block_data_table', 'b');
     // Adding the fields to be selected from the table.
     $query->fields('b');
     // Running the query.

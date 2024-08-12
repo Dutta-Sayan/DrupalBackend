@@ -3,9 +3,10 @@
 namespace Drupal\custom_blocks\Form;
 
 use Drupal\Core\Cache\Cache;
-use Drupal\Core\Database\Database;
+use Drupal\Core\Database\Connection;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Provides a Custom form.
@@ -14,6 +15,32 @@ use Drupal\Core\Form\FormStateInterface;
  * More groups can be added or removed during value input.
  */
 class CustomForm extends FormBase {
+
+  /**
+   * Database Connection variable.
+   *
+   * @var \Drupal\Core\Database\Connection
+   */
+  protected $database;
+
+  /**
+   * Initialises the database connection obejct.
+   *
+   * @param \Drupal\Core\Database\Connection $database
+   *   Database connection object.
+   */
+  public function __construct(Connection $database) {
+    $this->database = $database;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container) {
+    return new static(
+      $container->get('database')
+    );
+  }
 
   /**
    * {@inheritdoc}
@@ -176,8 +203,6 @@ class CustomForm extends FormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state): void {
-    // Connecting to database.
-    $conn = Database::getConnection();
     // Fetching the number of groups.
     $group_num = $form_state->get('group_num');
     // Fetching the values from form state and inserting in database.
@@ -190,7 +215,7 @@ class CustomForm extends FormBase {
       $group_info["first_label_value"] = $fields['group'][$i]['first_label_value'];
       $group_info["second_label_name"] = $fields['group'][$i]['second_label'];
       $group_info["second_label_value"] = $fields['group'][$i]['second_label_value'];
-      $conn->insert('custom_block_data_table')->fields($group_info)->execute();
+      $this->database->insert('custom_block_data_table')->fields($group_info)->execute();
     }
     // Invalidating cache when form data is submitted and stored in table.
     Cache::invalidateTags(['custom_block_data_table']);
