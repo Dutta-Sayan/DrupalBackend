@@ -1,0 +1,16 @@
+custom_blocks.content:
+  path: '/custom-welcome-page'
+  defaults:
+    _title: 'Custom Blocks Testing'
+    _controller: '\Drupal\custom_blocks\Controller\CustomBlocksController::content'
+  requirements:
+    _role: authenticated
+    _permission: 'access content'
+
+custom_blocks.custom_form:
+  path: '/custom-block-form'
+  defaults:
+    _title: 'Custom Form'
+    _form: 'Drupal\custom_blocks\Form\CustomForm'
+  requirements:
+    _permission: 'access content'

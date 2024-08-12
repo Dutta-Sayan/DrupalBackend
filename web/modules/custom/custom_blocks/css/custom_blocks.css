@@ -1,0 +1,25 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+.custom-data-block {
+  background: linear-gradient(rgba(84, 63, 192, 0.535), rgba(27, 7, 158, 0.605)), url(../images/forest.webp) no-repeat center/cover;
+}
+.custom-data-block-container {
+  color: white;
+  table {
+    margin-inline: auto;
+    padding-block: 10px;
+    tr,td,th {
+      padding: 15px;
+    }
+  }
+}
+.custom-data-block-heading {
+  padding: 20px;
+  margin-bottom: 10px;
+  h3 {
+    color: white;
+    text-align: center;
+  }
+}
