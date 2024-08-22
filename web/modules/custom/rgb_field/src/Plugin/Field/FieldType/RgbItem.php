@@ -38,6 +38,7 @@ class RgbItem extends FieldItemBase {
    * {@inheritdoc}
    */
   public static function propertyDefinitions(FieldStorageDefinitionInterface $field_definition) {
+    // Defines the value field will be stored as a string.
     $properties['value'] = DataDefinition::create('string')->setLabel(t('Hex Value'));
     return $properties;
   }
