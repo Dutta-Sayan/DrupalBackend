@@ -1,0 +1,13 @@
+movie.movie.*:
+  type: config_entity
+  label: 'Movie Config'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    label:
+      type: label
+      label: 'Label'
+    year:
+      type: integer
+      label: 'Year'

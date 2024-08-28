@@ -1,0 +1,76 @@
+# core.entity_form_display.node.movie.default.yml
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.movie.body
+    - field.field.node.movie.field_movie_price
+    - field.field.node.movie.image
+    - node.type.movie
+  module:
+    - text
+    - image
+    - file
+  enforced:
+    module:
+      - movie
+id: node.movie.default
+targetEntityType: node
+bundle: movie
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_textarea_with_summary
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+  created:
+    type: datetime_timestamp
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+  field_movie_price:
+    weight: 7
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      min: 0
+      max: 50000
+    third_party_settings: {  }
+    type: number
+  image:
+    weight: 6
+    type: image_image
+    label: 'Movie Image'
+    settings: { }
+    third_party_settings: { }
+  promote:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 3
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 4
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 1
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }
