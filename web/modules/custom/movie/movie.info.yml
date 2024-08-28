@@ -1,0 +1,10 @@
+name: Custom Content Movie
+type: module
+description: 'Creates a movie content type'
+package: Custom
+config_dependencies:
+  enforced:
+    module:
+      - movie
+core_version_requirement: ^10
+version: 1.0.0
