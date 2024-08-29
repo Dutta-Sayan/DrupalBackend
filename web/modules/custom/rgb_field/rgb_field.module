@@ -39,7 +39,7 @@ function rgb_field_theme($existing, $type, $theme, $path) {
  * @return Drupal\Core\Access\AccessResult
  *   Returns the access result to the field.
  */
-function rgb_field_entity_field_access(string $operation, FieldDefinitionInterface $field_definition) {
+function rgb_field_entity_field_access(string $operation, $field_definition) {
   // Check if this is the field you want to restrict.
   if ($field_definition->getName() === 'field_color') {
     // Fetching the current user.
