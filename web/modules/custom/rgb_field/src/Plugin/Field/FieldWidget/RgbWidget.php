@@ -25,6 +25,12 @@ class RgbWidget extends WidgetBase {
    * {@inheritdoc}
    */
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
+    // Accessing the hexcode value.
+    $value = $items[$delta]->value ?? '';
+    // If hexcode value is present, converting it to rgb.
+    if ($value) {
+      $rgb = Color::hexToRgb($value);
+    }
     // Field to take input of red value.
     $element['red'] = [
       '#type' => 'number',
@@ -33,7 +39,7 @@ class RgbWidget extends WidgetBase {
       '#maxlength' => 7,
       '#min' => 0,
       '#max' => 255,
-      '#default_value' => $items[$delta]->red ?? 0,
+      '#default_value' => $rgb['red'] ?? '',
     ];
     // Field to take input of green value.
     $element['green'] = [
@@ -43,7 +49,7 @@ class RgbWidget extends WidgetBase {
       '#maxlength' => 7,
       '#min' => 0,
       '#max' => 255,
-      '#default_value' => $items[$delta]->green ?? 0,
+      '#default_value' => $rgb['green'] ?? '',
     ];
     // Field to take input of blue value.
     $element['blue'] = [
@@ -53,7 +59,7 @@ class RgbWidget extends WidgetBase {
       '#maxlength' => 7,
       '#min' => 0,
       '#max' => 255,
-      '#default_value' => $items[$delta]->blue ?? 0,
+      '#default_value' => $rgb['blue'] ?? '',
     ];
     $element['value'] = [
       '#type' => 'hidden',
@@ -67,9 +73,9 @@ class RgbWidget extends WidgetBase {
    */
   public function massageFormValues(array $values, array $form, FormStateInterface $form_state) {
     // Settings default value to 0 if no input is given.
-    $red = $values[0]['red'] ?? 0;
-    $green = $values[0]['green'] ?? 0;
-    $blue = $values[0]['blue'] ?? 0;
+    $red = $values[0]['red'] ?? '';
+    $green = $values[0]['green'] ?? '';
+    $blue = $values[0]['blue'] ?? '';
 
     if ($red != '' || $green != '' || $blue != '') {
       // Convert RGB to hex code.
