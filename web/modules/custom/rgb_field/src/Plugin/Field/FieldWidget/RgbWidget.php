@@ -71,11 +71,16 @@ class RgbWidget extends WidgetBase {
     $green = $values[0]['green'] ?? 0;
     $blue = $values[0]['blue'] ?? 0;
 
-    // Convert RGB to hex code.
-    $hexcode = Color::rgbToHex("$red, $green, $blue");
+    if ($red != '' || $green != '' || $blue != '') {
+      // Convert RGB to hex code.
+      $hexcode = Color::rgbToHex("$red, $green, $blue");
 
-    // Update the value field with the hex code.
-    $values[0]['value'] = $hexcode;
+      // Update the value field with the hex code.
+      $values[0]['value'] = $hexcode;
+    }
+    else {
+      $values[0]['value'] = '';
+    }
 
     return $values;
 

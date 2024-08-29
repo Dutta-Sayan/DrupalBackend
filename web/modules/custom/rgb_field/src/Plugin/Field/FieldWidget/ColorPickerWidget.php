@@ -26,7 +26,7 @@ class ColorPickerWidget extends WidgetBase {
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
     $element += [
       '#type' => 'color',
-      '#default_value' => $items[$delta]->value ?? NULL,
+      '#default_value' => $items[$delta]->value ?? '',
     ];
 
     return ['value' => $element];
