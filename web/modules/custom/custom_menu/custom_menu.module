@@ -1,0 +1,35 @@
+<?php
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+
+function custom_menu_entity_view(array &$build, EntityInterface $entity) {
+  if ($entity->getEntityTypeId() == 'node' && $entity->bundle() == 'movie') {
+
+    // Getting the budget from confg form.
+    $config = \Drupal::config('custom_menu.admin_settings');
+    $budget = $config->get('budget');
+
+    // Getting the movie price from node.
+    $movie_price = $entity->get('field_movie_price')->value;
+
+    if ($budget > $movie_price) {
+        $message = 'The movie is under budget';
+    }
+    elseif ($budget < $movie_price) {
+      $message = 'The movie is over budget';
+    }
+    else {
+      $message = 'The movie is within budget';
+    }
+
+    $build['status'] = [
+      '#markup' => $message,
+      '#weight' => 0,
+      '#cache' => [
+        'tags' => ['BUDGET_UPDATE'],
+      ],
+    ];
+  }
+
+}
