@@ -13,7 +13,7 @@ use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
  *   The entity object.
  *
  * @return void
- *   Renders the message on the node.
+ *   Render the message on the node.
  */
 function custom_menu_entity_view(array &$build, EntityInterface $entity) {
   if ($entity->getEntityTypeId() == 'node' && $entity->bundle() == 'movie') {
