@@ -23,15 +23,17 @@ class RgbItem extends FieldItemBase {
    * {@inheritdoc}
    */
   public static function schema(FieldStorageDefinitionInterface $field_definition) {
-    return [
-      'columns' => [
-        'value' => [
-          'type' => 'text',
-          'size' => 'tiny',
-          'not null' => FALSE,
-        ],
+
+    $columns = [
+      'value' => [
+        'type' => 'text',
+        'size' => 'tiny',
+        'not null' => FALSE,
       ],
     ];
+
+    $schema = ['columns' => $columns];
+    return $schema;
   }
 
   /**
