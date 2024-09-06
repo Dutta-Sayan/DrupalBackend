@@ -1,0 +1,6 @@
+services:
+  my_node_view_event_subscriber:
+    class: 'Drupal\custom_menu\EventSubscriber\NodeViewEventSubscriber'
+    arguments: ['@config.factory', '@messenger', '@current_route_match']
+    tags:
+      - { name: 'event_subscriber' }
