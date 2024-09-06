@@ -1,0 +1,6 @@
+name: 'Custom Menu Module'
+type:  module
+core_version_requirement: ^10
+description:  'Testing Custom Menu'
+package:  Custom
+version: 1.0.0

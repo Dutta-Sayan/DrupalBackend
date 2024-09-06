@@ -1,0 +1,6 @@
+custom_menu.admin_settings:
+  title: 'Movie Budget'
+  parent: system.admin
+  description: 'Adds a movie budget'
+  route_name: custom_menu.admin_settings
+  weight: 6
