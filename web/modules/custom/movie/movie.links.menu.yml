@@ -1,0 +1,5 @@
+entity.movie.collection:
+  title: 'Movie'
+  parent: system.admin_config_system
+  description: 'Award Winning Movies'
+  route_name: entity.movie.collection
