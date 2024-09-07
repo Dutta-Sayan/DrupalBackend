@@ -1,0 +1,60 @@
+<?php
+
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Field\FieldDefinitionInterface;
+
+/**
+ * Invokes hook_theme.
+ * 
+ * @param mixed $existing
+ *   Array of existing implementations.
+ * @param mixed $type
+ *   Determines whether a theme or module is processed.
+ * @param mixed $theme
+ *   Name of the theme.
+ * @param mixed $path
+ *   Path of the theme or module.
+ * 
+ * @return array[]
+ *   Returns an associative array containing theme implementation info.
+ */
+function rgb_field_theme($existing, $type, $theme, $path) {
+  return [
+    'rgb_field_content' => [
+      'variables' => [
+        'content' => NULL,
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_entity_field_access.
+ * 
+ * @param string $operation
+ *   The operation that can be performed on the field.
+ * @param Drupal\Core\Field\FieldDefinitionInterface $field_definition
+ *   The definition of the field.
+ * 
+ * @return Drupal\Core\Access\AccessResult
+ *   Returns the access result to the field.
+ */
+function rgb_field_entity_field_access(string $operation, $field_definition) {
+  // Check if this is the field you want to restrict.
+  if ($field_definition->getName() === 'field_color') {
+    // Fetching the current user.
+    $account = \Drupal::currentUser();
+
+    // Access for viewing and editing the field is allowed if the user is admin.
+    if($operation === 'view' || $operation === 'edit') {
+      if(in_array('administrator', $account->getRoles())) {
+        return AccessResult::allowed();
+      }
+      else {
+        return AccessResult::forbidden();
+      }
+    }
+  }
+  // For other fields, we don't change access.
+  return AccessResult::neutral();
+}

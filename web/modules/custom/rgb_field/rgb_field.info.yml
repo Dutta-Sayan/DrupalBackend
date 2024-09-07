@@ -1,0 +1,8 @@
+name: 'RGB Fields Module'
+type:  module
+core_version_requirement: ^10
+description:  'Enter RGB Hex Code.'
+package:  Custom
+dependencies:
+  - field
+version: 1.0.0
