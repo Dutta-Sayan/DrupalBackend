@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="events-data">
+    <div class="events-data-yearly">
+      <span class="table-heading">Yearly Events Counts</span>
+        <table class="yearly-events-table">
+          <thead>
+            <tr>
+              <th>Year</th>
+              <th>No. of Events</th>
+            </tr>
+          </thead>
+          {% for item in content['Yearly Events'] %}
+          <tbody>
+            <tr>
+              <td>{{item.year}}</td>
+              <td>{{item.event_count}}</td>
+            </tr>
+          </tbody>
+          {% endfor %}
+        </table>
+    </div>
+
+    <div class="events-data-quarterly">
+      <span class="table-heading">Quarterly Events Counts</span>
+        <table class="quarterly-events-table">
+          <thead>
+            <tr>
+              <th>Quarter</th>
+              <th>No. of Events</th>
+            </tr>
+          </thead>
+          {% for item in content['Quarterly Events'] %}
+          <tbody>
+            <tr>
+              <td>{{item.quarter}}</td>
+              <td>{{item.event_count}}</td>
+            </tr>
+          </tbody>
+          {% endfor %}
+        </table>
+    </div>
+
+    <div class="events-data-type">
+      <span class="table-heading">Type of Events Counts</span>
+        <table class="type-events-table">
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>No. of Events</th>
+            </tr>
+          </thead>
+          {% for item in content['Events By Type'] %}
+          <tbody>
+            <tr>
+              <td>{{item.event_type}}</td>
+              <td>{{item.event_count}}</td>
+            </tr>
+          </tbody>
+          {% endfor %}
+        </table>
+    </div>
+  </div>
+</div>

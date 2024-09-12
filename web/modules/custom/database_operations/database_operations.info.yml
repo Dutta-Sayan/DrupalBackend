@@ -1,0 +1,5 @@
+name: 'Database Operations'
+type: module
+description: 'Fetches Events data from database'
+package: Custom
+core_version_requirement: ^10 || ^11

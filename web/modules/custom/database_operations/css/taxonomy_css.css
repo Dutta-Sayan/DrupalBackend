@@ -1,0 +1,26 @@
+*{
+  margin:0;
+  padding: 0;
+}
+.taxonomy-details {
+  background-color: rgb(200, 200, 221);
+  label {
+    font-weight: bold;
+    display: inline;
+  }
+  #info {
+    display: inline;
+    a {
+      color: white;
+    }
+  }
+}
+.node-details {
+  color: white;
+  background-color: rgb(55, 55, 85);
+}
+.error {
+  background-color: red;
+  font-style: oblique;
+  width: 800px;
+}

@@ -1,0 +1,11 @@
+events_css:
+  version: 1.0
+  css:
+    theme:
+      css/events_css.css: {}
+
+taxonomy_css:
+  version: 1.0
+  css:
+    theme:
+      css/taxonomy_css.css: {}

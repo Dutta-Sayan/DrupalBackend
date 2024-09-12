@@ -1,0 +1,15 @@
+event_details:
+  path: '/event-details'
+  defaults:
+    _controller: '\Drupal\database_operations\Controller\EventsController::content'
+    _title: 'Events Data'
+  requirements:
+    _permission: 'access content'
+
+taxonomy_details:
+  path: '/taxonomy-details'
+  defaults:
+    _title: 'Taxonomy Term Details'
+    _form: '\Drupal\database_operations\Form\TaxonomyTermForm'
+  requirements:
+    _permission: 'access content'
