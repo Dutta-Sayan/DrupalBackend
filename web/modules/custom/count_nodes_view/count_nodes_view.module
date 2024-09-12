@@ -51,7 +51,7 @@ function count_nodes_view_count_nodes(NodeInterface $node): int {
  * @param mixed $view_mode
  *   The view mode the entity is rendered in.
  */
-function count_nodes_view_node_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
+function count_nodes_view_node_view(array &$build, EntityInterface $entity) {
   $module_handler = \Drupal::moduleHandler();
   $current_counts = $module_handler->invokeAll('count_nodes', [$entity]);
   // invokeAll() returns an array having one value, extracting it.
